@@ -9,7 +9,9 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Table(name="item")
-public class Item {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type")
+public abstract class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

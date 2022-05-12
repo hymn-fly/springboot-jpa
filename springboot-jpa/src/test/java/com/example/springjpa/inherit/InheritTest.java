@@ -1,5 +1,8 @@
 package com.example.springjpa.inherit;
 
+import com.example.springjpa.domain.Car;
+import com.example.springjpa.domain.Food;
+import com.example.springjpa.domain.Furniture;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

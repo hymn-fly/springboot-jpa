@@ -1,4 +1,4 @@
-package com.example.springjpa.inherit;
+package com.example.springjpa.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Setter
 @Getter
 @DiscriminatorValue("furniture")
-public class Furniture extends ParentItem {
+public class Furniture extends Item {
     private long width;
     private long height;
 }

@@ -56,9 +56,10 @@ public class RelationTest {
         EntityTransaction transaction = em.getTransaction();
 
         transaction.begin();
-        Item item = new Item();
+        Car item = new Car();
         item.setPrice(1500);
         item.setStockQuantity(100);
+        item.setPower(100);
         em.persist(item);
 
         OrderItem orderItem = new OrderItem();

@@ -1,4 +1,4 @@
-package com.example.springjpa.inherit;
+package com.example.springjpa.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 @Setter
 @Getter
 @DiscriminatorValue("car")
-public class Car extends ParentItem {
+public class Car extends Item {
     private long power;
 }
 
