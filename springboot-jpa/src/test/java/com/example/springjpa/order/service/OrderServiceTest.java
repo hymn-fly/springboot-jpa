@@ -7,20 +7,20 @@ import com.example.springjpa.item.ItemType;
 import com.example.springjpa.order.dto.MemberDto;
 import com.example.springjpa.order.dto.OrderDto;
 import com.example.springjpa.order.dto.OrderItemDto;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
+import java.awt.print.Pageable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class OrderServiceTest {
@@ -79,23 +79,21 @@ class OrderServiceTest {
     }
 
     @Test
-    @Transactional
     void findAllTest() {
         //Given
         // When
-        List<OrderDto> orderDtos = orderService.findAll();
+        Page<OrderDto> orderDtos = orderService.getOrders(PageRequest.of(0, 10));
 
         // Then
-        assertThat(orderDtos).hasSize(1);
-        assertThat(orderDtos.get(0).uuid()).isEqualTo(orderDtoData.uuid());
+        assertThat(orderDtos.getContent()).hasSize(1);
+        assertThat(orderDtos.getContent().get(0).uuid()).isEqualTo(orderDtoData.uuid());
     }
 
     @Test
-    @Transactional
     void findOneTest() {
         //Given
         // When
-        OrderDto byId = orderService.findById(orderDtoData.uuid());
+        OrderDto byId = orderService.getOrderById(orderDtoData.uuid());
 
         // Then
         assertThat(byId.uuid()).isEqualTo(orderDtoData.uuid());
