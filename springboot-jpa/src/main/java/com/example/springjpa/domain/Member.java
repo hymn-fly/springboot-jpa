@@ -30,7 +30,7 @@ public class Member {
     @Column(name="description")
     private String description;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
     public void addOrder(Order order){

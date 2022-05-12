@@ -22,7 +22,7 @@ public class OrderItem {
     @JoinColumn(name="order_id", referencedColumnName = "id")
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="item_id", referencedColumnName = "id")
     private Item item;
 
